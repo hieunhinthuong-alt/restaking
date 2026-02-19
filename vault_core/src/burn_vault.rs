@@ -62,7 +62,7 @@ impl BurnVault {
 
 #[cfg(test)]
 mod tests {
-    use solana_program::{account_info::AccountInfo, rent::Rent, system_program};
+    use solana_program::account_info::AccountInfo;
 
     use super::*;
 
@@ -112,7 +112,6 @@ mod tests {
             &mut data,
             &system_program::ID,
             false,
-            Rent::default().minimum_balance(0),
         );
 
         // Test load with writable=false
@@ -142,7 +141,6 @@ mod tests {
             &mut data,
             &invalid_owner,
             false,
-            Rent::default().minimum_balance(0),
         );
 
         let result = BurnVault::load(&program_id, &base, &account, false);
@@ -166,7 +164,6 @@ mod tests {
             &mut data,
             &system_program::ID,
             false,
-            Rent::default().minimum_balance(0),
         );
 
         let result = BurnVault::load(&program_id, &base, &account, false);
@@ -190,7 +187,6 @@ mod tests {
             &mut data,
             &system_program::ID,
             false,
-            Rent::default().minimum_balance(0),
         );
 
         let result = BurnVault::load(&program_id, &base, &account, true);

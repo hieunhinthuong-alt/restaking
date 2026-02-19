@@ -22,7 +22,6 @@ use solana_program::{
     rent::Rent,
     sysvar::Sysvar,
 };
-use solana_system_interface::program as system_program;
 use spl_associated_token_account_interface::instruction::create_associated_token_account;
 use spl_token_interface::{
     instruction::{mint_to, transfer},

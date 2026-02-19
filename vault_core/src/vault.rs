@@ -1537,6 +1537,7 @@ mod tests {
     }
 
     #[test]
+    #[allow(deprecated)]
     fn test_mint_burn_signer_address_not_signer() {
         let mut vault = Vault::new(
             Pubkey::new_unique(),
@@ -1566,13 +1567,14 @@ mod tests {
             data,
             owner: &Pubkey::new_unique(),
             executable: false,
-            rent_epoch: 0,
+            _unused: 0,
         };
         let err = vault.check_mint_burn_admin(Some(&not_signer)).unwrap_err();
         assert_eq!(err, VaultError::VaultMintBurnAdminInvalid);
     }
 
     #[test]
+    #[allow(deprecated)]
     fn test_mint_burn_signer_address_invalid() {
         let mut vault = Vault::new(
             Pubkey::new_unique(),
@@ -1602,7 +1604,7 @@ mod tests {
             data,
             owner: &Pubkey::new_unique(),
             executable: false,
-            rent_epoch: 0,
+            _unused: 0,
         };
         let err = vault
             .check_mint_burn_admin(Some(&wrong_address_and_signer))
@@ -2821,7 +2823,6 @@ mod tests {
             &mut data,
             &owner,
             false,
-            0,
         );
 
         assert_eq!(
@@ -2838,7 +2839,6 @@ mod tests {
             &mut data,
             &owner,
             false,
-            0,
         );
 
         assert_eq!(
