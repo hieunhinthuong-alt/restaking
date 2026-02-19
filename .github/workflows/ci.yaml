@@ -24,11 +24,7 @@ jobs:
         uses: baptiste0928/cargo-install@v3
         with:
           crate: cargo-audit
-<<<<<<< HEAD
           version: "0.22.0"
-      - run: cargo audit --ignore RUSTSEC-2022-0093 --ignore RUSTSEC-2024-0344 --ignore RUSTSEC-2024-0421 --ignore RUSTSEC-2025-0022
-=======
-          version: "0.21.1"
       - run: |
           cargo audit \
             --ignore RUSTSEC-2022-0093 \
@@ -36,7 +32,6 @@ jobs:
             --ignore RUSTSEC-2024-0421 \
             --ignore RUSTSEC-2025-0022 \
             --ignore RUSTSEC-2025-0055 # waiting for solana upgrade
->>>>>>> d39fb44e65466342241dc2e75c0b73406bc77c86
 
   code_gen:
     # cargo b && ./target/debug/jito-shank-cli && yarn generate-clients && cargo b
@@ -50,7 +45,7 @@ jobs:
       - uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
           components: rustfmt, clippy
-          toolchain: 1.86.0
+          toolchain: 1.89.0
       - name: Install system dependencies
         run: sudo apt-get update && sudo apt-get install -y libudev-dev
 
@@ -80,7 +75,7 @@ jobs:
       - uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
           components: rustfmt, clippy
-          toolchain: 1.86.0
+          toolchain: 1.89.0
       - name: Install cargo-sort from crates.io
         uses: baptiste0928/cargo-install@v3
         with:
@@ -103,7 +98,7 @@ jobs:
           filenames: program.env
       - uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
-          toolchain: 1.86.0
+          toolchain: 1.89.0
       - name: install solana toolsuite
         run: sh -c "$(curl -sSfL https://release.anza.xyz/v2.2.14/install)"
       - name: add to path
@@ -150,7 +145,7 @@ jobs:
       - uses: actions-rust-lang/setup-rust-toolchain@v1
         with:
           components: rustfmt, clippy
-          toolchain: 1.86.0
+          toolchain: 1.89.0
       - name: Install cargo-llvm-cov
         uses: taiki-e/install-action@cargo-llvm-cov
       - name: Install system dependencies
